@@ -76,7 +76,7 @@ export default function Form(){
 
 
     return(
-        <div>
+        
           <form onSubmit={submitHandler}>
               <label htmlFor='name'>Name
                 <input 
@@ -149,7 +149,7 @@ export default function Form(){
             <button disabled={buttonDisabled} type="submit">Add User</button>
             <pre>{JSON.stringify(users, null, 2)}</pre>
           </form>
-        </div>
+        
     )
 }
     
