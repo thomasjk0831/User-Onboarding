@@ -88,7 +88,7 @@ export default function Form(){
                   onChange={changeHandler}
                   />
                   {error.name.length > 0 ? (
-                    <p>{error.name}</p>
+                    <p className="error-msg">{error.name}</p>
                   ): null}
               </label>
               <label htmlFor='email'>Email
@@ -101,7 +101,7 @@ export default function Form(){
                   onChange={changeHandler}
                   />
                   { error.email.length > 0 ? (
-                    <p>{error.email}</p>
+                    <p className="error-msg">{error.email}</p>
                   ) : null }
               </label>
               <label htmlFor='password'>Password
@@ -114,11 +114,11 @@ export default function Form(){
                   onChange={changeHandler}
                   />
                   { error.password.length > 0 ? (
-                    <p>{error.password}</p>
+                    <p className="error-msg">{error.password}</p>
                   ) : null }
               </label>
               
-            <label htmlFor="position">
+            <label htmlFor="position" className="position">
               What is the person's position?
                <select
                  value={form.position}
@@ -132,21 +132,24 @@ export default function Form(){
                  <option value="TL">TL</option>
                  <option value="Career">Career</option>
                </select>
-        
+               { error.position.length > 0 ? (
+                    <p className="error-msg">{error.position}</p>
+                  ) : null }
             </label>
-            <label htmlFor="terms"> I agree to the terms of use
+            <label htmlFor="terms" className="terms"> 
                 <input 
                   id="terms" 
                   name="terms" 
                   type="checkbox" 
                   checked={form.terms} 
                   onChange={changeHandler} />
-                   { error.terms.length > 0 ? (
-                    <p>{error.terms}</p>
-                  ) : null }
+                  &nbsp;I agree to the terms of use
+                  
             </label>
 
-            <button disabled={buttonDisabled} type="submit">Add User</button>
+            <button disabled={buttonDisabled} 
+              style={buttonDisabled===false? {border:"3px solid lightgreen"} : null} 
+              type="submit">Add User</button>
             <pre>{JSON.stringify(users, null, 2)}</pre>
           </form>
         
