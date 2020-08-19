@@ -5,8 +5,8 @@ import axios from 'axios';
 const formSchema = yup.object().shape({
     name: yup.string().required("Name is a required field"),
     email: yup.string().email("Must be a valid email address").required("Must include email address"),
-    password: yup.string().min(8, "Must be at least 8 chars").required("Must include password"),
-    position: yup.string(),
+    password: yup.string().required("Must include password").min(8, "Must be at least 8 chars"),
+    position: yup.string().required("Position is required"),
     terms: yup.boolean().oneOf([true], "Please agree to terms of use")
 })
 
@@ -56,6 +56,12 @@ export default function Form(){
         .then(response => {
           console.log(response.data)
           setUsers(response.data)
+          setForm({
+          name: "",
+          email: "",
+          password: "",
+          position: "",
+          terms: false,})
         })
         .catch(err => console.log(err))
     }
